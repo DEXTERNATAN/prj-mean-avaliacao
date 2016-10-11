@@ -13,12 +13,40 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
 
+	console.log('CREATE');
+    var avaliacao = new Avaliacao(req.body);
+
+	avaliacao.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.status(201).json(avaliacao);
+		}
+	});
+
 };
 
 /**
  * Show the current Avaliacao
  */
 exports.read = function(req, res) {
+
+    Avaliacao.findById(req.params.avaliacaoId).exec(function(err, avaliacao) {
+		if (err) {
+	      return res.status(400).send({
+	          message: errorHandler.getErrorMessage(err)
+	      });
+      } else {
+         if (!avaliacao) {
+				return res.status(404).send({
+  					message: 'Category not found'
+  				});
+			}
+			res.json(avaliacao);
+      }
+	});
 
 };
 
