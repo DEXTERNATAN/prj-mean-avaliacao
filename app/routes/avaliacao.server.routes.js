@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
+
 	var avaliacao = require('../../app/controllers/avaliacao.server.controller');
 	
 	app.route('/avaliacao')

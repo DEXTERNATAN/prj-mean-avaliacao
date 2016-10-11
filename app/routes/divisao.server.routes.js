@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
 	// Routing logic   
-	var categories = require('../../app/controllers/divisao.server.controller');
+	var divisao = require('../../app/controllers/divisao.server.controller');
 
 	app.route('/divisao')
 	  .get(divisao.list);
