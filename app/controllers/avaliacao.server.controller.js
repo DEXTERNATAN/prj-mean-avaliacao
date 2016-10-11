@@ -40,14 +40,14 @@ exports.delete = function(req, res) {
  * List of Avaliacaos
  */
 exports.list = function(req, res) {
-	Avaliacao.find().exec(function(err, avaliacao) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.json(avaliacao);
-        }
-    });
+	// Avaliacao.find().exec(function(err, avaliacao) {
+ //        if (err) {
+ //            return res.status(400).send({
+ //                message: errorHandler.getErrorMessage(err)
+ //            });
+ //        } else {
+ //            res.json(avaliacao);
+ //        }
+ //    });
  	//res.json([{ name: 'Beverages' }, { name: 'Condiments' }]);
 };
