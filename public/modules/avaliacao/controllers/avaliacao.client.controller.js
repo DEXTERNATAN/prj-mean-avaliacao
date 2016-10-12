@@ -34,6 +34,9 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 		// Remove existing Avaliacao
 		$scope.remove = function(avaliacao) {
+			
+			console.log('vamos remover um registro', avaliacao);	
+			
 			if ( avaliacao ) { 
 				avaliacao.$remove();
 
@@ -52,11 +55,12 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Update existing Avaliacao
 		$scope.update = function() {
 			var avaliacao = $scope.avaliacao;
-
-			avaliacao.$update(function() {
-				$location.path('avaliacao/' + avaliacao._id);
+			
+			avaliacao.$update(function(response) {
+				console.log(response);
+				$location.path('avaliacao/' + response.identificador);
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				$scope.error = errorResponse.data.message;	
 			});
 		};		
 
