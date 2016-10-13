@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisao',
-	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisao) {
+	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisao, Colaborador) {
 
 		$scope.authentication = Authentication;
 		$scope.currentPage = 1;
@@ -73,9 +73,12 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Find a list of Division
 		$scope.findDivisao = function () {
 			$scope.divisoes = Divisao.query();
-			// for (var i in $scope.divisao) {
-			// 	console.log($scope.divisao[i].$$state);
-			// }
+		};
+
+		// Find a list of Colaboradores
+		$scope.findColaboradores = function () {
+			console.log('Lista colaboradores');
+			$scope.colaboradores = Colaborador.query();
 		};
 
 		// Find existing Avaliação

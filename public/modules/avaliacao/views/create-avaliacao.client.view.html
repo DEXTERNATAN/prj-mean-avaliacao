@@ -24,8 +24,8 @@
 			<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
 				<p>Colaborador:</p>&nbsp;&nbsp;&nbsp;
 				<div layout="row" layout-align="center center">
-					<md-select placeholder="Selecione os colaboradores" ng-model="colaborador" md-on-open="loadColaboradores()" style="min-width: 200px;">
-						<md-option ng-value="colaborador" ng-repeat="colaborador in colaboradores | filter: divisao.name">{{colaborador.name}}</md-option>
+					<md-select placeholder="Selecione os colaboradores" ng-model="colaborador" md-on-open="findColaboradores()" style="min-width: 200px;">
+						<md-option ng-value="colaborador" ng-repeat="colaborador in colaboradores">{{colaborador.name}}</md-option>
 					</md-select>
 				</div>
 			</div>
