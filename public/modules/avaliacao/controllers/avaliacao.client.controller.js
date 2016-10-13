@@ -34,20 +34,21 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 		// Remove existing Avaliacao
 		$scope.remove = function(avaliacao) {
-			
-			console.log('vamos remover um registro', avaliacao);	
-			
 			if ( avaliacao ) { 
-				avaliacao.$remove();
-
+				avaliacao.$remove(function(response) {
+					$scope.success = response.message;
+					console.log(response.message);
+					//$location.path('avaliacao');
+				});
 				for (var i in $scope.avaliacao) {
 					if ($scope.avaliacao [i] === avaliacao) {
 						$scope.avaliacao.splice(i, 1);
 					}
 				}
 			} else {
-				$scope.avaliacao.$remove(function() {
-					$location.path('avaliacao');
+				$scope.avaliacao.$remove(function(response) {
+					$scope.success = response.message;
+					//$location.path('avaliacao');
 				});
 			}
 		};

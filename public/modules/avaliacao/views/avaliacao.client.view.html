@@ -7,8 +7,11 @@
 		<a class="btn btn-primary" href="/#!/avaliacao/{{avaliacao._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
+		<a class="btn btn-primary" data-ng-click="remove(avaliacao);">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
+	</div>
+	<div data-ng-show="success" class="text-success">
+		<strong data-ng-bind="success"></strong>
 	</div>
 </section>
