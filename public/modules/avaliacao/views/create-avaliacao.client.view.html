@@ -1,4 +1,114 @@
-<section data-ng-controller="AvaliacaoController">
+<div ng-controller="AvaliacaoController" layout="column" layout-align="center center" style="padding:0px" ng-cloak data-ng-init="find()">
+	<md-toolbar class="md-warn">
+
+		<div class="md-toolbar-tools">
+			<h2 class="md-flex">Avaliação</h2>
+		</div>
+	</md-toolbar>
+
+	<md-content flex layout-padding>
+		<form class="form-horizontal" data-ng-submit="create()" novalidate>
+			<input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+			<textarea name="description" data-ng-model="description" id="description" class="form-control" cols="30" rows="10" placeholder="Description"></textarea>
+			<input type="submit" class="btn btn-default">
+			
+			<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
+				<p>Divisão:</p>&nbsp;&nbsp;&nbsp;
+				<div layout="row" layout-align="center center">
+					<md-select placeholder="Selecione as divisões" ng-model="divisao" md-on-open="findDivisao()" style="min-width: 200px;">
+						<md-option ng-value="divisao" ng-repeat="divisoes in divisao">{{divisoes.name}}</md-option>
+					</md-select>
+				</div>
+			</div>
+
+			<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
+				<p>Colaborador:</p>&nbsp;&nbsp;&nbsp;
+				<div layout="row" layout-align="center center">
+					<md-select placeholder="Selecione os colaboradores" ng-model="colaborador" md-on-open="loadColaboradores()" style="min-width: 200px;">
+						<md-option ng-value="colaborador" ng-repeat="colaborador in colaboradores | filter: divisao.name">{{colaborador.name}}</md-option>
+					</md-select>
+				</div>
+			</div>
+
+			<div layout-gt-sm="row">
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Especidalidades:</label>
+					<input ng-model="especialidadee" readonly>
+				</md-input-container>
+			</div>
+
+			<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
+				<p>Papel:</p>&nbsp;&nbsp;&nbsp;
+				<div layout="row" layout-align="center center">
+					<md-select placeholder="Selecione os papeis" ng-model="papel" md-on-open="loadPapeis()" style="min-width: 200px;">
+						<md-option ng-value="papel" ng-repeat="papel in papeis | filter: colaborador.especialidade" ng-click="InserePapelMdChips(papel.name,main.contacts)">{{papel.name}}</md-option>
+					</md-select>
+				</div>
+			</div>
+
+			<div style=" width: 92%; display: right; margin: 0 auto;" ng-if="papel.name">
+				<md-content class="md-padding" layout="column">
+					<h2 class="md-title">Papeis Selecionados:</h2>
+					<md-chips ng-model="tagPapeis" ng-init="[]" name="listPapeis" ng-value="listPapeis" md-separator-keys="main.customKeys"></md-chips>
+					<br/>
+				</md-content>
+				<div style=" width: 5%; display: left; margin: 0 auto;" ng-if="papel.name">
+					<md-button class="md-raised">SALVAR</md-button>
+					<md-button class="md-raised md-primary">SALVAR</md-button>
+					<md-button ng-disabled="true" class="md-raised md-primary">SALVAR</md-button>
+					
+				</div>
+			</div>
+
+			<div class="techs" layout-align="center">
+				<md-card ng-repeat="avaliacao in avaliacao">
+					<md-card-content>
+						<md-checkbox ng-model="awesomeThing.atributoChecked" aria-label="Checkbox 1"></md-checkbox>
+						<img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
+						<h3 class="md-title">{{ avaliacao.name }}</h3>
+						<p>{{ avaliacao.description }}</p>
+					</md-card-content>
+					<div class="md-action-buttons" style="display:left;">
+						<md-button ng-href="{{ awesomeThing.url }}">Abrangência:</md-button>
+						<br/>
+						<md-radio-group ng-model="data.group1" layout="row" layout-align="center center">
+							<md-radio-button value="Apple" class="md-primary" ng-click="showAlert($event, 'M')">M</md-radio-button>
+							<md-radio-button value="Banana" class="md-primary" ng-click="showAlert($event, 'A')"> A </md-radio-button>
+							<md-radio-button value="Mango" class="md-primary" ng-click="showAlert($event, 'F')">F</md-radio-button>
+						</md-radio-group>
+						<br>
+						<md-button ng-href="{{ awesomeThing.url }}">Complexidade:</md-button>
+						<md-radio-group ng-model="data.group2" layout="row" layout-align="center center">
+							<md-radio-button value="Apple" class="md-primary" ng-click="showAlert($event, 'S')">S</md-radio-button>
+							<md-radio-button value="Banana" class="md-primary" ng-click="showAlert($event, 'D')"> D </md-radio-button>
+							<md-radio-button value="Mango" class="md-primary" ng-click="showAlert($event, 'A')">A</md-radio-button>
+						</md-radio-group>
+						<br/>
+						<md-button ng-href="{{ awesomeThing.url }}">Impacto:</md-button>
+						<md-radio-group ng-model="data.group3" layout="row" layout-align="center center">
+							<md-radio-button value="Apple" class="md-primary" ng-click="showAlert($event, 'G')">G</md-radio-button>
+							<md-radio-button value="Banana" class="md-primary" ng-click="showAlert($event, 'B')"> B </md-radio-button>
+							<md-radio-button value="Mango" class="md-primary" ng-click="showAlert($event, 'C')">C</md-radio-button>
+						</md-radio-group>
+						<br>
+					</div>
+				</md-card>
+			</div>
+			<br>
+		</form>
+	</md-content>
+
+</div>
+
+</md-content>
+
+</div>
+
+
+
+
+<!--ANTIGA-->
+<!--<section data-ng-controller="AvaliacaoController">
 	 <div class="page-header">
         <h1>Nova Avaliação</h1>
     </div>
@@ -27,5 +137,4 @@
         </form>
     </div>
 </section>
-
-
+-->

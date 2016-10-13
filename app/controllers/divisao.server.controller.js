@@ -13,17 +13,17 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
 	
-	// var divisao = new Divisao(req.body);
+	var divisao = new Divisao(req.body);
 
-	// divisao.save(function(err) {
-	// 	if (err) {
-	// 		return res.status(400).send({
-	// 			message: errorHandler.getErrorMessage(err)
-	// 		});
-	// 	} else {
-	// 		res.status(201).json(divisao);
-	// 	}
-	// });	
+	divisao.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.status(201).json(divisao);
+		}
+	});	
 
 };
 
