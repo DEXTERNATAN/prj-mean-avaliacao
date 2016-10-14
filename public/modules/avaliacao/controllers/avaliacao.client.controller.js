@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisao','Colaborador',
-	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisao, Colaborador) {
+angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisao','Colaborador', 'Papel',
+	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisao, Colaborador, Papel) {
 
 		$scope.authentication = Authentication;
 		$scope.currentPage = 1;
@@ -73,6 +73,12 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Find a list of Division
 		$scope.findDivisao = function () {
 			$scope.divisoes = Divisao.query();
+		};
+
+		// Find a list of Papers
+		$scope.findPapeis = function () {
+			console.log('Papeis lista');
+			$scope.papeis = Papel.query();
 		};
 
 		// Find a list of Colaboradores

@@ -41,7 +41,8 @@
 				<p>Papel:</p>&nbsp;&nbsp;&nbsp;
 				<div layout="row" layout-align="center center">
 					<md-select placeholder="Selecione os papeis" ng-model="papel" md-on-open="findPapeis()" style="min-width: 200px;">
-						<md-option ng-value="papel" ng-repeat="papel in papeis | filter: colaborador.especialidade" ng-click="InserePapelMdChips(papel.name,main.contacts)">{{papel.name}}</md-option>
+						<md-option ng-value="papel" ng-repeat="papel in papeis" ng-click="InserePapelMdChips(papel.name,main.contacts)">{{papel.name}}</md-option>
+						 <!--| filter: colaborador.especialidade-->
 					</md-select>
 				</div>
 			</div>
