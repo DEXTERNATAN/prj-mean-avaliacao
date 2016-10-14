@@ -14,7 +14,7 @@ angular.module('papel').controller('PapelController', ['$scope', '$location', 'P
 			
 			// Redirect after save
 			papel.$save(function(response) {
-				$location.path('create-divisao/' + response._id);
+				$location.path('create-papel/' + response._id);
 
 				// Clear form fields
 				$scope.name = '';
@@ -23,7 +23,7 @@ angular.module('papel').controller('PapelController', ['$scope', '$location', 'P
 			});
 		};
 
-		// Find a list of Divisao
+		// Find a list of papel
 		$scope.find = function() {
 			$scope.papel = Papel.query();
 		};

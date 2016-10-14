@@ -12,6 +12,7 @@ var mongoose = require('mongoose'),
  * Create a Especialidade
  */
 exports.create = function(req, res) {
+	
 	var especialidade = new Especialidade(req.body);
 	especialidade.user = req.user;
 

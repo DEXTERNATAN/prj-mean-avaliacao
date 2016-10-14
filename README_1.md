@@ -12,3 +12,6 @@ https://github.com/bbraithwaite/NorthwindNode
 # executar o comando abaixo logo apos o passo 3
 # grunt 
 
+# Implementar o tema abaixo no futuro
+http://flatfull.com/themes/materil/angular/#/app/dashboard
+https://github.com/angular/material2

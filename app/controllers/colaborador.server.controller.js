@@ -14,6 +14,7 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 
 	var colaborador = new Colaborador(req.body);
+	colaborador.especialidade = req.especialidade;
 
 	colaborador.save(function(err) {
 		if (err) {
@@ -21,11 +22,13 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.status(201).json(colaborador);
+			//res.status(201).json(colaborador);
+			res.jsonp(colaborador);
 		}
 	});		
 
 };
+
 
 /**
  * Show the current Colaborador
@@ -52,8 +55,8 @@ exports.delete = function(req, res) {
  * List of Colaboradors
  */
 exports.list = function(req, res) {
-
 		Colaborador.find().exec(function(err, colaborador) {
+		//Colaborador.find().sort('-created').populate('especialidade', 'name').exec(function(err, colaborador) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -62,5 +65,4 @@ exports.list = function(req, res) {
             res.json(colaborador);
         }
     });
-
 };

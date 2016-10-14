@@ -77,8 +77,10 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 		// Find a list of Papers
 		$scope.findPapeis = function () {
-			console.log('Papeis lista');
 			$scope.papeis = Papel.query();
+			if(!$scope.papeis){
+				$scope.papeis = 'Nenhum registro encontrado';
+			}
 		};
 
 		// Find a list of Colaboradores

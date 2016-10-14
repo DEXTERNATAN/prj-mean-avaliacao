@@ -19,8 +19,6 @@ function validateLength (v) {
  */
 var ColaboradorSchema = new Schema({
 	// Colaborador model fields   
-	// Divisao model fields   
-	// the property name
     created: {         
         // types are defined e.g. String, Date, Number (http://mongoosejs.com/docs/guide.html)
         type: Date,   
@@ -42,6 +40,15 @@ var ColaboradorSchema = new Schema({
         required: 'name cannot be blank',
         // wires in a custom validator function (http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate).
         validate: [validateLength, 'name must be 15 chars in length or less']
+    },
+    especialidade: {
+        type: Schema.ObjectId,
+        ref: 'Especialidades'
+    },
+    divisao: {
+        type: String,
+        default: '',
+        trim: true
     }
 });
 
