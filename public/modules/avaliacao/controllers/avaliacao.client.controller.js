@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisao',
+angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisao','Colaborador',
 	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisao, Colaborador) {
 
 		$scope.authentication = Authentication;
@@ -77,7 +77,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 		// Find a list of Colaboradores
 		$scope.findColaboradores = function () {
-			console.log('Lista colaboradores');
+			console.log('Lista colaboradores: ', Colaborador.query());
 			$scope.colaboradores = Colaborador.query();
 		};
 
