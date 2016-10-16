@@ -2,12 +2,17 @@
 
 //Setting up route
 angular.module('colaborador').config(['$stateProvider',
-	function($stateProvider) {
+	function ($stateProvider) {
 		// Colaborador state routing
 		$stateProvider.
-		state('colaborador', {
-			url: '/colaboradorcreate',
-			templateUrl: 'modules/colaborador/views/colaborador.client.view.html'
-		});
+			state('lista-colaborador', {
+				url: '/lista-colaborador',
+				templateUrl: 'modules/colaborador/views/lista-colaborador.client.view.html'
+			}).
+
+			state('colaborador', {
+				url: '/colaborador/create',
+				templateUrl: 'modules/colaborador/views/colaborador.client.view.html'
+			});
 	}
 ]);

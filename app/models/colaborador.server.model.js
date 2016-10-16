@@ -18,6 +18,7 @@ function validateLength (v) {
  * Colaborador Schema
  */
 var ColaboradorSchema = new Schema({
+    //_id: Number,
 	// Colaborador model fields   
     created: {         
         // types are defined e.g. String, Date, Number (http://mongoosejs.com/docs/guide.html)
@@ -42,14 +43,14 @@ var ColaboradorSchema = new Schema({
         validate: [validateLength, 'name must be 15 chars in length or less']
     },
     especialidade: {
-        type: Schema.ObjectId,
-        ref: 'Especialidades'
-    },
-    divisao: {
+        //  type: Schema.ObjectId,
+        //  ref: 'Especialidade',
+        //  required: true
         type: String,
         default: '',
         trim: true
-    }
+
+     }
 });
 
 mongoose.model('Colaborador', ColaboradorSchema);
