@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisao','Colaborador', 'Papel',
-	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisao, Colaborador, Papel) {
+angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos','Colaboradors', 'Papels',
+	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels) {
 
 		$scope.authentication = Authentication;
 		$scope.currentPage = 1;
@@ -18,7 +18,13 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 			// Create new Avaliação object
 			var avaliacao = new Avaliacao({
 				name: this.name,
-				description: this.description
+				description: this.description,
+				divisao: this.divisao,
+				colaborador: this.colaborador,
+				especialidade: this.especialidade,
+				papel: this.papel,
+				atributos: this.atributos
+				
 			});
 
 			// Redirect after save
@@ -27,6 +33,13 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.description = '';
+				$scope.divisao = '';
+				$scope.colaborador = '';
+				$scope.especialidade = '';
+				$scope.papel = '';
+				$scope.atributos = '';
+
 			}, function (errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -72,12 +85,12 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 		// Find a list of Division
 		$scope.findDivisao = function () {
-			$scope.divisoes = Divisao.query();
+			$scope.divisoes = Divisaos.query();
 		};
 
 		// Find a list of Papers
 		$scope.findPapeis = function () {
-			$scope.papeis = Papel.query();
+			$scope.papeis = Papels.query();
 			if(!$scope.papeis){
 				$scope.papeis = 'Nenhum registro encontrado';
 			}
@@ -85,8 +98,8 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 		// Find a list of Colaboradores
 		$scope.findColaboradores = function () {
-			console.log('Lista colaboradores: ', Colaborador.query());
-			$scope.colaboradores = Colaborador.query();
+			console.log('Lista colaboradores: ', Colaboradors.query());
+			$scope.colaboradores = Colaboradors.query();
 		};
 
 		// Find existing Avaliação

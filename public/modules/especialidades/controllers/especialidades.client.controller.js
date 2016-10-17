@@ -9,7 +9,8 @@ angular.module('especialidades').controller('EspecialidadesController', ['$scope
 		$scope.create = function() {
 			// Create new Especialidade object
 			var especialidade = new Especialidades ({
-				name: this.name
+				name: this.name,
+				descricao: this.descricao
 			});
 
 			// Redirect after save
@@ -18,6 +19,7 @@ angular.module('especialidades').controller('EspecialidadesController', ['$scope
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.descricao = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

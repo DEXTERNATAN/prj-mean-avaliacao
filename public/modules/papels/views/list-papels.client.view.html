@@ -1,0 +1,19 @@
+<section data-ng-controller="PapelsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Papel</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="papel in papels" data-ng-href="#!/papels/{{papel._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="papel.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="papel.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="papel.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!papels.$resolved || papels.length">
+    	No Papels yet, why don't you <a href="/#!/papels/create">create one</a>?
+    </div>
+</section>

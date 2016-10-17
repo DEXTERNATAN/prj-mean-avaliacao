@@ -1,0 +1,41 @@
+<section data-ng-controller="DivisaosController" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1>Editar Divisão</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+				<div class="form-group">
+					<label class="control-label" for="name">Nome</label>
+					<div class="controls">
+						<input type="text" data-ng-model="divisao.name" id="name" class="form-control" placeholder="Name" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="descricao">Descrição</label>
+					<div class="controls">
+						<input type="text" data-ng-model="divisao.descricao" id="descricao" class="form-control" placeholder="Descrição" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="UF">UF</label>
+					<div class="controls">
+						<input type="text" data-ng-model="divisao.UF" id="UF" class="form-control" placeholder="UF" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="especialidade">Especialidade</label>
+					<div class="controls">
+						<input type="text" data-ng-model="divisao.especialidade" id="especialidade" class="form-control" placeholder="Especialidade" required>
+					</div>
+				</div>                
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

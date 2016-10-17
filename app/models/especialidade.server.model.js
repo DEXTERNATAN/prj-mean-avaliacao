@@ -16,6 +16,12 @@ var EspecialidadeSchema = new Schema({
 		required: 'Please fill Especialidade name',
 		trim: true
 	},
+	descricao: {
+		type: String,
+		default: '',
+		required: 'Please fill Especialidade name',
+		trim: true
+	},	
 	created: {
 		type: Date,
 		default: Date.now

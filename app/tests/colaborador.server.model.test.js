@@ -29,8 +29,8 @@ describe('Colaborador Model Unit Tests:', function() {
 
 		user.save(function() { 
 			colaborador = new Colaborador({
-				// Add model fields
-				// ...
+				name: 'Colaborador Name',
+				user: user
 			});
 
 			done();
@@ -41,6 +41,15 @@ describe('Colaborador Model Unit Tests:', function() {
 		it('should be able to save without problems', function(done) {
 			return colaborador.save(function(err) {
 				should.not.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without name', function(done) { 
+			colaborador.name = '';
+
+			return colaborador.save(function(err) {
+				should.exist(err);
 				done();
 			});
 		});
