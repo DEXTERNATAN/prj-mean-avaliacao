@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+	Especialidade = require('../../app/models/especialidade.server.model'),
 	Schema = mongoose.Schema;
 
 /**
@@ -28,12 +29,7 @@ var ColaboradorSchema = new Schema({
 		required: 'Please fill Colaborador telefone',
 		trim: true
 	},	
-	especialidade: {
-		type: String,
-		default: '',
-		required: 'Please fill Colaborador especialidade',
-		trim: true
-	},		
+	especialidade    : [ Especialidade ],
 	created: {
 		type: Date,
 		default: Date.now

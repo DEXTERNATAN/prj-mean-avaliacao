@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Colaborador = mongoose.model('Colaborador'),
+	Especialidade = mongoose.model('Especialidade'),
 	_ = require('lodash');
 
 /**
@@ -13,15 +14,17 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
 	var colaborador = new Colaborador(req.body);
-	colaborador.user = req.user;
+	colaborador.especialidade = req.body.especialidade;
 
 	colaborador.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
+				//message: JSON.stringify({error: err.message})
 			});
+	 		//res.send(JSON.stringify({error: err.message}));
 		} else {
-			res.jsonp(colaborador);
+			res.json(colaborador);
 		}
 	});
 };
@@ -73,7 +76,7 @@ exports.delete = function(req, res) {
  * List of Colaboradors
  */
 exports.list = function(req, res) { 
-	Colaborador.find().sort('-created').populate('user', 'displayName').exec(function(err, colaboradors) {
+	Colaborador.find().sort('-created').populate('Especialidade', 'name').exec(function(err, colaboradors) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -88,7 +91,7 @@ exports.list = function(req, res) {
  * Colaborador middleware
  */
 exports.colaboradorByID = function(req, res, next, id) { 
-	Colaborador.findById(id).populate('user', 'displayName').exec(function(err, colaborador) {
+	Colaborador.findById(id).populate('Especialidade', 'name').exec(function(err, colaborador) {
 		if (err) return next(err);
 		if (! colaborador) return next(new Error('Failed to load Colaborador ' + id));
 		req.colaborador = colaborador ;
