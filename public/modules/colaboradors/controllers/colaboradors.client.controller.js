@@ -4,6 +4,7 @@
 angular.module('colaboradors').controller('ColaboradorsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Colaboradors', 'Especialidades',
 	function($scope, $stateParams, $location, Authentication, Colaboradors, Especialidade) {
 		$scope.authentication = Authentication;
+		$scope.especialidades = Especialidade.query();
 
 		// Create new Colaborador
 		$scope.create = function() {
@@ -50,7 +51,7 @@ angular.module('colaboradors').controller('ColaboradorsController', ['$scope', '
 		// Update existing Colaborador
 		$scope.update = function() {
 			var colaborador = $scope.colaborador;
-
+			
 			colaborador.$update(function() {
 				$location.path('colaboradors/' + colaborador._id);
 			}, function(errorResponse) {
@@ -64,9 +65,9 @@ angular.module('colaboradors').controller('ColaboradorsController', ['$scope', '
 		};
 
 		// Find a list of Especialidade
-		$scope.findEspecialidades = function() {
-			$scope.especialidades = Especialidade.query();
-		};
+		// $scope.findEspecialidades = function() {
+		// 	$scope.especialidades = Especialidade.query();
+		// };
 
 		// Find existing Colaborador
 		$scope.findOne = function() {

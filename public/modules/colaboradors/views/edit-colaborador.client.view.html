@@ -17,13 +17,24 @@
                         <input type="text" data-ng-model="colaborador.matricula" id="matricula" class="form-control" placeholder="matricula" required>
                     </div>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label class="control-label" for="especialidade">Especialidade</label>
                     <div class="controls">
-                        {{colaborador.especialidade[0]}}
+                        {{colaborador.especialidade[0]}
                         <input type="text" data-ng-model="colaborador.especialidade" id="especialidade" class="form-control" placeholder="especialidade" required>
                     </div>
-                </div>        
+                </div>        -->
+                <!--{{colaborador.especialidade[0].name}}-->
+				<div class="form-group">
+					<label class="control-label" for="name">Especialidade</label>
+					<md-select placeholder="Selecione a especialidade" ng-model="especialidade.name" style="min-width: 200px;">
+						<md-option 
+                            ng-value="especialidade" 
+                            ng-repeat="especialidade in especialidades" 
+                            ng-selected="{{ colaborador.especialidade[0].name === especialidade.name ? 'true' : 'false' }}">{{especialidade.name}}
+                        </md-option>
+					</md-select>
+				</div>                                    
                 <div class="form-group">
                     <label class="control-label" for="telefone">Telefone</label>
                     <div class="controls">
