@@ -19,23 +19,25 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="name">Especialidade</label>
-					<md-select placeholder="Selecione a especialidade" ng-model="especialidade" md-on-open="findEspecialidades()" style="min-width: 200px;">
-						<md-option ng-value="especialidade._id" ng-repeat="especialidade in especialidades">{{especialidade.name}}</md-option>
-					</md-select>
-
-					<div class="form-group">
-						<label class="control-label" for="telefone">Telefone</label>
-						<div class="controls">
-							<input type="text" data-ng-model="telefone" id="telefone" class="form-control" placeholder="telefone" required>
-						</div>
+					<div class="controls">
+						<md-select placeholder="Selecione a especialidade" ng-model="especialidade" md-on-open="findEspecialidades()" style="min-width: 200px;">
+							<md-option ng-value="especialidade._id" ng-repeat="especialidade in especialidades">{{especialidade.name}}</md-option>
+						</md-select>
 					</div>
-					<div class="form-group">
-						<input type="submit" class="btn btn-default">
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="telefone">Telefone</label>
+					<div class="controls">
+						<input type="text" data-ng-model="telefone" id="telefone" class="form-control" placeholder="telefone" required>
 					</div>
-					<div data-ng-show="error" class="text-danger">
-						<strong data-ng-bind="error"></strong>
-					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-default">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
 			</fieldset>
 		</form>
-		</div>
+	</div>
 </section>
