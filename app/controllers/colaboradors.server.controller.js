@@ -19,10 +19,10 @@ exports.create = function(req, res) {
 	colaborador.save(function(err) {
 		if (err) {
 			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-				//message: JSON.stringify({error: err.message})
-			});
-	 		//res.send(JSON.stringify({error: err.message}));
+			 	message: errorHandler.getErrorMessage(err)
+			// 	//message: JSON.stringify({error: err.message})
+			 });
+	 		//return res.send(JSON.stringify({error: err.message}));
 		} else {
 			res.json(colaborador);
 		}
@@ -46,9 +46,10 @@ exports.update = function(req, res) {
 
 	colaborador.save(function(err) {
 		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
+			// return res.status(400).send({
+			// 	message: errorHandler.getErrorMessage(err)
+			// });
+			return res.send(JSON.stringify({error: err.message}));
 		} else {
 			res.jsonp(colaborador);
 		}
@@ -91,7 +92,7 @@ exports.list = function(req, res) {
  * Colaborador middleware
  */
 exports.colaboradorByID = function(req, res, next, id) { 
-	Colaborador.findById(id).populate('Especialidade', 'name').exec(function(err, colaborador) {
+	Colaborador.findById(id).populate('especialidade', 'name').exec(function(err, colaborador) {
 		if (err) return next(err);
 		if (! colaborador) return next(new Error('Failed to load Colaborador ' + id));
 		req.colaborador = colaborador ;
@@ -103,8 +104,8 @@ exports.colaboradorByID = function(req, res, next, id) {
  * Colaborador authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.colaborador.user.id !== req.user.id) {
-		return res.status(403).send('User is not authorized');
-	}
+	// if (req.colaborador.user.id !== req.user.id) {
+	// 	return res.status(403).send('User is not authorized');
+	// }
 	next();
 };

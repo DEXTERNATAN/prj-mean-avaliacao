@@ -17,16 +17,10 @@
 						<input type="text" data-ng-model="matricula" id="matricula" class="form-control" placeholder="matricula" required>
 					</div>
 				</div>
-				<!--<div class="form-group">
-                    <label class="control-label" for="especialidade">Especialidade</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="especialidade" id="especialidade" class="form-control" placeholder="especialidade" required>
-                    </div>
-                </div>  -->
 				<div class="form-group">
 					<label class="control-label" for="name">Especialidade</label>
 					<md-select placeholder="Selecione a especialidade" ng-model="especialidade" md-on-open="findEspecialidades()" style="min-width: 200px;">
-						<md-option ng-value="especialidade" ng-repeat="especialidade in especialidades">{{especialidade.name}}</md-option>
+						<md-option ng-value="especialidade._id" ng-repeat="especialidade in especialidades">{{especialidade.name}}</md-option>
 					</md-select>
 
 					<div class="form-group">

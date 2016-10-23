@@ -64,16 +64,13 @@ angular.module('colaboradors').controller('ColaboradorsController', ['$scope', '
 			$scope.colaboradores = Colaboradors.query();
 		};
 
-		// Find a list of Especialidade
-		// $scope.findEspecialidades = function() {
-		// 	$scope.especialidades = Especialidade.query();
-		// };
-
 		// Find existing Colaborador
 		$scope.findOne = function() {
 			$scope.colaborador = Colaboradors.get({ 
 				colaboradorId: $stateParams.colaboradorId
 			});
 		};
+
+
 	}
 ]);

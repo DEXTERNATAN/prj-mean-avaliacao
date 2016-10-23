@@ -29,7 +29,11 @@ var ColaboradorSchema = new Schema({
 		required: 'Please fill Colaborador telefone',
 		trim: true
 	},	
-	especialidade    : [ Especialidade ],
+	//especialidade    : [ Especialidade ],
+	especialidade: {
+		type: Schema.Types.ObjectId,
+		ref: 'Especialidade'
+	},
 	created: {
 		type: Date,
 		default: Date.now
