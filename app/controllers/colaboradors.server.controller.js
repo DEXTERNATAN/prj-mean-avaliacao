@@ -77,7 +77,7 @@ exports.delete = function(req, res) {
  * List of Colaboradors
  */
 exports.list = function(req, res) { 
-	Colaborador.find().sort('-created').populate('Especialidade', 'name').exec(function(err, colaboradors) {
+	Colaborador.find().sort('-created').populate('especialidade', 'name').exec(function(err, colaboradors) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
