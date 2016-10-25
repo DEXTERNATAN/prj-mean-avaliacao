@@ -34,6 +34,10 @@ var ColaboradorSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Especialidade'
 	},
+	divisao: {
+		type: Schema.Types.ObjectId,
+		ref: 'Divisao'
+	},	
 	created: {
 		type: Date,
 		default: Date.now

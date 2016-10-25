@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Colaborador = mongoose.model('Colaborador'),
 	Especialidade = mongoose.model('Especialidade'),
+	Divisao = mongoose.model('Divisao'),
 	_ = require('lodash');
 
 /**
@@ -15,6 +16,7 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 	var colaborador = new Colaborador(req.body);
 	colaborador.especialidade = req.body.especialidade;
+	colaborador.divisao = req.body.divisao;
 
 	colaborador.save(function(err) {
 		if (err) {
@@ -77,7 +79,10 @@ exports.delete = function(req, res) {
  * List of Colaboradors
  */
 exports.list = function(req, res) { 
-	Colaborador.find().sort('-created').populate('especialidade', 'name').exec(function(err, colaboradors) {
+	Colaborador.find().sort('-created')
+	.populate('especialidade', 'name')
+	.populate('divisao', 'name')
+	.exec(function(err, colaboradors) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)

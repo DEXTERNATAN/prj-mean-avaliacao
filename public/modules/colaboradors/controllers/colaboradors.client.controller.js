@@ -1,10 +1,11 @@
 'use strict';
 
 // Colaboradors controller
-angular.module('colaboradors').controller('ColaboradorsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Colaboradors', 'Especialidades',
-	function($scope, $stateParams, $location, Authentication, Colaboradors, Especialidade) {
+angular.module('colaboradors').controller('ColaboradorsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Colaboradors', 'Especialidades', 'Divisaos' ,
+	function($scope, $stateParams, $location, Authentication, Colaboradors, Especialidade, Divisaos) {
 		$scope.authentication = Authentication;
 		$scope.especialidades = Especialidade.query();
+		$scope.divisoes = Divisaos.query();
 
 		// Create new Colaborador
 		$scope.create = function() {
@@ -13,7 +14,8 @@ angular.module('colaboradors').controller('ColaboradorsController', ['$scope', '
 				name: this.name,
 				matricula: this.matricula,
 				telefone: this.telefone,
-				especialidade: this.especialidade
+				especialidade: this.especialidade,
+				divisao: this.divisao,
 			});
 			
 			// Redirect after save
@@ -25,6 +27,7 @@ angular.module('colaboradors').controller('ColaboradorsController', ['$scope', '
 				$scope.matricula = '';
 				$scope.telefone = '';
 				$scope.especialidade = '';
+				$scope.divisao = '';
 				
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
