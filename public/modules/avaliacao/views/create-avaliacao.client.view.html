@@ -1,15 +1,9 @@
 <div ng-controller="AvaliacaoController" ng-cloak data-ng-init="find()">
 	<div layout="vertical" layout-md-column>
-
 		<md-content>
-			<header>
-				<acme-navbar creation-date="main.creationDate"></acme-navbar>
-			</header>
-
 			<section class="jumbotron">
 				<h1>Avaliação 2016</h1>
 			</section>
-
 			<!-- DIVISOES -->
 			<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
 				<p>Divisão:</p>&nbsp;&nbsp;&nbsp;
@@ -19,7 +13,6 @@
 					</md-select>
 				</div>
 			</div>
-
 			<!-- COLABORADORES -->
 			<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
 				<p>Colaborador:</p>&nbsp;&nbsp;&nbsp;
@@ -29,7 +22,7 @@
 					</md-select>
 				</div>
 			</div>
-
+			<!-- ESPECIALIDADES -->
 			<div style=" width: 30%; display: right; margin: 0 auto;">
 				<div layout-gt-sm="row">
 					<md-input-container class="md-block" flex-gt-sm>
@@ -38,17 +31,7 @@
 					</md-input-container>
 				</div>
 			</div>
-
 			<!-- PAPEL -->
-			<!--<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
-				<p>Papel:</p>&nbsp;&nbsp;&nbsp;
-				<div layout="row" layout-align="center center">
-					<md-select placeholder="Selecione os papeis" ng-model="papel" md-on-open="findPapeis()" style="min-width: 200px;">
-						<md-option ng-value="papel" ng-repeat="papel in papeis | filter: colaborador.especialidade" ng-click="InserePapelMdChips(papel.name,main.contacts)">{{papel.name}}</md-option>
-					</md-select>
-				</div>
-			</div>-->
-
 			<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
 				<p>Papel:</p>&nbsp;&nbsp;&nbsp;
 				<div layout="row" layout-align="center center">
@@ -57,10 +40,6 @@
 					</md-select>
 				</div>
 			</div>
-
-			<!-- botões de salvamento  -->
-
-
 
 			<!-- CHIPS COM OPÇÕES PARA DELEÇÃO -->
 			<div style=" width: 92%; display: right; margin: 0 auto;" ng-if="papel.name">
@@ -80,8 +59,6 @@
 			<div class="techs" layout-align="center">
 
 				<md-card ng-repeat="awesomeThing in filteredPapel(main.awesomeThing) |orderBy:'rank' track by (awesomeThing.id + $index + awesomeThing.title)">
-
-
 					<!-- filteredPapel(tagPapeis) -->
 					<md-card-content>
 						<md-checkbox ng-model="awesomeThing.atributoChecked" aria-label="Checkbox 1"></md-checkbox>

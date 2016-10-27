@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos','Colaboradors', 'Papels',
+angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos', 'Colaboradors', 'Papels',
 	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels) {
 
 		$scope.authentication = Authentication;
 		$scope.currentPage = 1;
 		$scope.pageSize = 10;
+		$scope.tagPapeis = [];
 		$scope.offset = 0;
 
 		// Page changed handler
@@ -24,7 +25,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 				especialidade: this.especialidade,
 				papel: this.papel,
 				atributos: this.atributos
-				
+
 			});
 
 			// Redirect after save
@@ -91,7 +92,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Find a list of Papers
 		$scope.findPapeis = function () {
 			$scope.papeis = Papels.query();
-			if(!$scope.papeis){
+			if (!$scope.papeis) {
 				$scope.papeis = 'Nenhum registro encontrado';
 			}
 		};
@@ -112,6 +113,10 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Search for a Avaliação
 		$scope.categorySearch = function (product) {
 			$location.path('avaliacao/' + product._id);
+		};
+
+		$scope.InserePapelMdChips = function (Papels) {
+			$scope.tagPapeis.push(Papels);
 		};
 
 
