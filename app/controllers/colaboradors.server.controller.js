@@ -97,7 +97,10 @@ exports.list = function(req, res) {
  * Colaborador middleware
  */
 exports.colaboradorByID = function(req, res, next, id) { 
-	Colaborador.findById(id).populate('especialidade', 'name').exec(function(err, colaborador) {
+	Colaborador.findById(id)
+	.populate('especialidade', 'name')
+	.populate('divisao', 'name')
+	.exec(function(err, colaborador) {
 		if (err) return next(err);
 		if (! colaborador) return next(new Error('Failed to load Colaborador ' + id));
 		req.colaborador = colaborador ;
