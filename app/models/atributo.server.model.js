@@ -16,8 +16,7 @@ var AtributoSchema = new Schema({
 		required: 'Please fill Atributo name',
 		trim: true
 	},
-	tipo: [{'Tipo':'Abrangencia'}, {'Tipo':'Complexidade'}, {'Tipo':'Impacto'}],
-	Classificação: [{'Tipo':'Abrangencia'}, {'Tipo':'Complexidade'}, {'Tipo':'Impacto'}],
+	tipo: [],
 	created: {
 		type: Date,
 		default: Date.now

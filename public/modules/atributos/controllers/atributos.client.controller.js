@@ -7,6 +7,8 @@ angular.module('atributos').controller('AtributosController', ['$scope', '$state
 
 		// Create new Atributo
 		$scope.create = function() {
+
+			console.log('Valores: ', this.tipo);
 			// Create new Atributo object
 			var atributo = new Atributos ({
 				name: this.name
