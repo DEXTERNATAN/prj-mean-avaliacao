@@ -55,15 +55,31 @@
 				</div>
 			</div>
 
+
+
+
+			 <!--DIVISOES 
+			<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
+				<p>Divisão:</p>&nbsp;&nbsp;&nbsp;
+				<div layout="row" layout-align="center center">
+					<md-select placeholder="Selecione as divisões" ng-model="atributos" md-on-open="findAtributos()" style="min-width: 200px;">
+						<md-option ng-value="atributos" ng-repeat="atributo in atributos">{{atributo.name}}</md-option>
+					</md-select>
+				</div>
+			</div>-->
+
+
+
 			<!-- CARDS COM TEXTO DOS ATRIBUTOS -->
 			<div class="techs" layout-align="center">
 
-				<md-card ng-repeat="awesomeThing in filteredPapel(main.awesomeThing) |orderBy:'rank' track by (awesomeThing.id + $index + awesomeThing.title)">
+				<md-card ng-repeat="atributo in atributos">
+					<!--<md-card ng-repeat="awesomeThing in filteredPapel(main.awesomeThing) |orderBy:'rank' track by (awesomeThing.id + $index + awesomeThing.title)">-->
 					<!-- filteredPapel(tagPapeis) -->
 					<md-card-content>
 						<md-checkbox ng-model="awesomeThing.atributoChecked" aria-label="Checkbox 1"></md-checkbox>
 						<!-- <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}"> -->
-						<h3 class="md-title">{{ awesomeThing.title }}</h3>
+						<h3 class="md-title">{{ atributo.name }}</h3>
 						<p>{{ awesomeThing.description }}</p>
 					</md-card-content>
 					<div class="md-action-buttons" style="display:left;">

@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos', 'Colaboradors', 'Papels',
-	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels) {
+angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos', 'Colaboradors', 'Papels', 'Atributos',
+	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels, Atributos) {
 
 		$scope.authentication = Authentication;
+		$scope.atributos = Atributos.query();
 		$scope.currentPage = 1;
 		$scope.pageSize = 10;
 		$scope.tagPapeis = [];
@@ -101,6 +102,11 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		$scope.findColaboradores = function () {
 			console.log('Lista colaboradores: ', Colaboradors.query());
 			$scope.colaboradores = Colaboradors.query();
+		};
+
+		// Find a list of Division
+		$scope.findAtributos = function () {
+			$scope.atributos = Atributos.query();
 		};
 
 		// Find existing Avaliação

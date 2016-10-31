@@ -11,7 +11,13 @@ var mongoose = require('mongoose'),
  */
 var ClassificacaoSchema = new Schema({
 	// Classificacao model fields   
-	// ...
+
+	tipo: {
+		type: String,
+		default: '',
+		required: 'Please fill Atributo name',
+		trim: true
+	},
 	name: {
 		type: String,
 		default: '',

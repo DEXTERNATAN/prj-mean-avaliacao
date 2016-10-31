@@ -8,11 +8,13 @@ angular.module('atributos').controller('AtributosController', ['$scope', '$state
 		// Create new Atributo
 		$scope.create = function() {
 
-			console.log('Valores: ', this.tipo);
 			// Create new Atributo object
 			var atributo = new Atributos ({
-				name: this.name
+				name: this.name,
+				tipo: ['Abrangência', 'Impacto', 'Relevância']
 			});
+			
+			console.log(Atributos);
 
 			// Redirect after save
 			atributo.$save(function(response) {
@@ -20,6 +22,7 @@ angular.module('atributos').controller('AtributosController', ['$scope', '$state
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.tipo = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
