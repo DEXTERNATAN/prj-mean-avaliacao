@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos', 'Colaboradors', 'Papels', 'Atributos',
-	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels, Atributos) {
+angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos', 'Colaboradors', 'Papels',
+	'Atributos', '$mdConstant', '$mdDialog',
+
+	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels, Atributos, $mdConstant, $mdDialog) {
 
 		$scope.authentication = Authentication;
 		$scope.atributos = Atributos.query();
@@ -125,6 +127,36 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 			$scope.tagPapeis.push(Papels);
 		};
 
+		$scope.loadAtributos = function (dscAtributo) {
+
+			$scope.dscAtributo = dscAtributo;
+			$scope.results = [];
+
+			angular.forEach($scope.atributos, function (value, key) {
+				
+				// if (value.atributo.indexOf($scope.dscAtributo) !== -1) {
+				 	$scope.results.push(value.classificacao[0]);
+				// }
+
+			});
+			
+			return $scope.results;
+
+		};
+
+		$scope.showAlert = function (ev, atributo, tipo) {
+			//$scope.atributos = $scope.loadAtributos(atributo, tipo);
+			$mdDialog.show(
+				$mdDialog.alert()
+					.parent(angular.element(document.querySelector('#popupContainer')))
+					.clickOutsideToClose(true)
+					.title('Title')
+					.textContent(atributo)
+					.ariaLabel(atributo)
+					.ok('Fechar')
+					.targetEvent(ev)
+			);
+		};
 
 
 	}

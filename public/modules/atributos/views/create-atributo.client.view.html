@@ -16,46 +16,46 @@
 				<div class="form-group">
 					<label class="control-label" for="name">Tipo</label>
 					<div class="controls">
-						<md-checkbox ng-model="tipo" >Abrangencia</md-checkbox>
-						<md-checkbox ng-model="tipo" >Impacto</md-checkbox>
-						<md-checkbox ng-model="tipo" >Relevancia</md-checkbox>
+						<md-checkbox ng-model="tipo" ng-checked="true">Abrangencia</md-checkbox>
+						<md-checkbox ng-model="tipo" ng-checked="true">Impacto</md-checkbox>
+						<md-checkbox ng-model="tipo" ng-checked="true">Relevancia</md-checkbox>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<h2 class="md-title"><strong>Abrangência</strong></h2>
 					<label class="control-label" for="moderado">Moderado</label>
-					<textarea rows="3" cols="2" data-ng-model="moderado" id="moderado" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.abrangencia.moderado" id="moderado" class="form-control" placeholder=""
 						required></textarea>
 					<label class="control-label" for="significativa">Significativa</label>
-					<textarea rows="3" cols="2" data-ng-model="Significativa" id="Significativa" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.abrangencia.significativa" id="significativo" class="form-control" placeholder=""
 						required></textarea>
 					<label class="control-label" for="muito">Muito</label>
-					<textarea rows="3" cols="2" data-ng-model="muito" id="muito" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.abrangencia.muito" id="muito" class="form-control" placeholder=""
 						required></textarea>
 				</div>
 				<div class="form-group">
 					<h2 class="md-title"><strong>Complexidade</strong></h2>
 					<label class="control-label" for="moderada">Moderada</label>
-					<textarea rows="3" cols="2" data-ng-model="moderada" id="moderada" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.complexidade.moderada" id="moderada" class="form-control" placeholder=""
 						required></textarea>
 					<label class="control-label" for="alta">Alta</label>
-					<textarea rows="3" cols="2" data-ng-model="alta" id="alta" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.complexidade.alta" id="alta" class="form-control" placeholder=""
 						required></textarea>
 					<label class="control-label" for="altissima">Altissima</label>
-					<textarea rows="3" cols="2" data-ng-model="altissima" id="altissima" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.complexidade.altissima" id="altissima" class="form-control" placeholder=""
 						required></textarea>
 				</div>
 				<div class="form-group">
 					<h2 class="md-title"><strong>Impacto</strong></h2>
 					<label class="control-label" for="relevante">Relevante</label>
-					<textarea rows="3" cols="2" data-ng-model="name" id="relevante" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.impacto.relevancia" id="relevante" class="form-control" placeholder=""
 						required></textarea>
 					<label class="control-label" for="muitos">Muito</label>
-					<textarea rows="3" cols="2" data-ng-model="muitos" id="muitos" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.impacto.muito" id="muitos" class="form-control" placeholder=""
 						required></textarea>
 					<label class="control-label" for="altamente">Altamente</label>
-					<textarea rows="3" cols="2" data-ng-model="altamente" id="altamente" class="form-control" placeholder=""
+					<textarea rows="3" cols="2" data-ng-model="classificacao.impacto.altamente" id="altamente" class="form-control" placeholder=""
 						required></textarea>
 				</div>
 				<div class="form-group">
