@@ -34,9 +34,10 @@ angular.module('atributos').controller('AtributosController', ['$scope', '$state
 			var atributo = new Atributos({
 				name: this.name,
 				tipo: ['Abrangência', 'Impacto', 'Relevância'],
-				classificacao: [$scope.classificacao]
+				classificacao: [$scope.classificacao],
+				checado: true
 			});
-			console.log('Valor do atributo: ', atributo);
+			
 			//Redirect after save
 			atributo.$save(function (response) {
 				$location.path('atributos/' + response._id);

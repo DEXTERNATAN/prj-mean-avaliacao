@@ -30,6 +30,8 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 				atributos: this.atributos
 
 			});
+			
+			console.log('Valor: ', avaliacao);
 
 			// Redirect after save
 			avaliacao.$save(function (response) {

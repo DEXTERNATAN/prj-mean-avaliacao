@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    Divisao = require('../../app/models/divisao.server.model'),
     Schema = mongoose.Schema;
 
 /**
@@ -36,12 +37,9 @@ var AvaliacaoSchema = new Schema({
         trim: true
     },
     divisao: {
-        // types are defined e.g. String, Date, Number (http://mongoosejs.com/docs/guide.html)
-        type: String,
-        default: '',
-        // types have specific functions e.g. trim, lowercase, uppercase (http://mongoosejs.com/docs/api.html#schema-string-js)
-        trim: true
-    },
+		type: Schema.ObjectId,
+		ref: 'Divisao'
+	},
     colaborador: {
         type: String,
         default: '',

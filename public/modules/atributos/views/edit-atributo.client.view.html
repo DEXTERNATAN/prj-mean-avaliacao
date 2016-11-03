@@ -19,6 +19,15 @@
                     {{atributo.classificacao[0]["impacto"]}}-->
 				</div>
 
+								<!--CheckBox-->
+				<div class="form-group">
+					<label class="control-label" for="name">Tipo</label>
+					<div class="controls">
+						{{atributo.checado}}
+						<md-checkbox ng-model="atributo.checado" ng-checked="">Checado</md-checkbox>
+					</div>
+				</div>
+
 				<div ng-repeat="classificacao in atributo.classificacao">
 
 					<div class="form-group">

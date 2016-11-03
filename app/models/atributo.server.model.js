@@ -19,6 +19,10 @@ var AtributoSchema = new Schema({
 	},
 	tipo: [],
 	classificacao: [],
+	checado: {
+		type: Boolean,
+		default: false
+	},
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
