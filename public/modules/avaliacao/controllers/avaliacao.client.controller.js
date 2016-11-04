@@ -5,8 +5,11 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels, Atributos, $mdConstant, $mdDialog) {
 
+		$scope.colaboradores = Colaboradors.query();
 		$scope.authentication = Authentication;
 		$scope.atributos = Atributos.query();
+		$scope.divisoes = Divisaos.query();
+		console.log($scope.colaboradores);
 		$scope.currentPage = 1;
 		$scope.pageSize = 10;
 		$scope.tagPapeis = [];
@@ -23,10 +26,10 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 			var avaliacao = new Avaliacao({
 				name: this.name,
 				description: this.description,
-				divisao: this.divisao,
-				colaborador: this.colaborador,
-				especialidade: this.especialidade,
-				papel: this.papel,
+				divisao: this.divisao._id,
+				colaborador: this.colaborador._id,
+				especialidade: this.colaborador.especialidade._id,
+				papel: this.papel._id,
 				atributos: this.atributos
 
 			});
@@ -34,13 +37,13 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 			console.log('Valor: ', avaliacao);
 
 			// Redirect after save
-			avaliacao.$save(function (response) {
-				$location.path('avaliacao/' + response._id);
+			 avaliacao.$save(function (response) {
+			 	$location.path('avaliacao/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
-				$scope.description = '';
-				$scope.divisao = '';
+			 	$scope.name = '';
+			 	$scope.description = '';
+			 	$scope.divisao = '';
 				$scope.colaborador = '';
 				$scope.especialidade = '';
 				$scope.papel = '';

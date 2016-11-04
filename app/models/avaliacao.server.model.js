@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
     Divisao = require('../../app/models/divisao.server.model'),
     Colaborador = require('../../app/models/colaborador.server.model'),
+    Especialidade = require('../../app/models/especialidade.server.model'),
     Papel = require('../../app/models/papel.server.model'),
     Schema = mongoose.Schema;
 
@@ -25,9 +26,9 @@ var AvaliacaoSchema = new Schema({
         type: String,
         default: '',
         trim: true,
-        unique: true,
+        //unique: true,
         // make this a required field
-        required: 'name cannot be blank',
+        //required: 'name cannot be blank',
         // wires in a custom validator function (http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate).
         validate: [validateLength, 'name must be 15 chars in length or less']
     },
@@ -47,10 +48,9 @@ var AvaliacaoSchema = new Schema({
 		ref: 'Colaborador'
 	},
     especialidade: {
-        type: String,
-        default: '',
-        trim: true
-    },
+		type: Schema.ObjectId,
+		ref: 'Especialidade'
+	},
     papel: {
 		type: Schema.ObjectId,
 		ref: 'Papel'
