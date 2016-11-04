@@ -1,4 +1,5 @@
-<section data-ng-controller="AvaliacaoController">
+<div ng-controller="AvaliacaoController" ng-cloak data-ng-init="find()">
+	
 	<form class="form-horizontal" data-ng-submit="create()" novalidate>
 		<div class="form-group">
 			<div layout="vertical" layout-md-column>
@@ -6,6 +7,7 @@
 					<section class="jumbotron">
 						<h1>Avaliação 2016</h1>
 					</section>
+
 					<!-- DIVISOES -->
 					<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
 						<p>Divisão:</p>&nbsp;&nbsp;&nbsp;
@@ -14,8 +16,38 @@
 								<md-option ng-model="divisao" ng-value="divisao._id" ng-repeat="divisao in divisoes">{{divisao.name}}</md-option>
 							</md-select>
 						</div>
-
 					</div>
+
+					<!-- COLABORADORES -->
+					<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
+						<p>Colaborador:</p>&nbsp;&nbsp;&nbsp;
+						<div layout="row" layout-align="center center">
+							<md-select placeholder="Selecione os colaboradores" ng-model="colaborador" md-on-open="findColaboradores()" style="min-width: 200px;">
+								<md-option ng-model="colaborador" ng-value="colaborador._id" ng-repeat="colaborador in colaboradores | filter: divisao.name">{{colaborador.name}}</md-option>
+							</md-select>
+						</div>
+					</div>
+					
+					<!-- ESPECIALIDADES -->
+					<div style=" width: 30%; display: right; margin: 0 auto;">
+						<div layout-gt-sm="row">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Especidalidades:</label>
+								<input ng-model="colaboradores.especialidade.name" ng-value="" readonly>
+							</md-input-container>
+						</div>
+					</div>
+
+					<!-- PAPEL -->
+					<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
+						<p>Papel:</p>&nbsp;&nbsp;&nbsp;
+						<div layout="row" layout-align="center center">
+							<md-select placeholder="Selecione os papeis" ng-model="papel" md-on-open="findPapeis()" style="min-width: 200px;">
+								<md-option ng-model="papel" ng-value="papel._id" ng-repeat="papel in papeis" ng-click="InserePapelMdChips(papel.name,main.contacts)">{{papel.name}}</md-option>
+							</md-select>
+						</div>
+					</div>
+
 					<div class="controls">
 						<input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
 					</div>

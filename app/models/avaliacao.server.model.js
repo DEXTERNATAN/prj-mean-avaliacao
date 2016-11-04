@@ -5,6 +5,8 @@
  */
 var mongoose = require('mongoose'),
     Divisao = require('../../app/models/divisao.server.model'),
+    Colaborador = require('../../app/models/colaborador.server.model'),
+    Papel = require('../../app/models/papel.server.model'),
     Schema = mongoose.Schema;
 
 /**
@@ -41,20 +43,18 @@ var AvaliacaoSchema = new Schema({
 		ref: 'Divisao'
 	},
     colaborador: {
-        type: String,
-        default: '',
-        trim: true
-    },
+		type: Schema.ObjectId,
+		ref: 'Colaborador'
+	},
     especialidade: {
         type: String,
         default: '',
         trim: true
     },
     papel: {
-        type: String,
-        default: '',
-        trim: true
-    },
+		type: Schema.ObjectId,
+		ref: 'Papel'
+	},
     atributos: {
         type: String,
         default: '',
