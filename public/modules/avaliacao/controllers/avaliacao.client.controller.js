@@ -5,14 +5,12 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 	function ($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels, Atributos, $mdConstant, $mdDialog) {
 
-		$scope.colaboradores = Colaboradors.query();
 		$scope.authentication = Authentication;
 		$scope.atributos = Atributos.query();
-		$scope.divisoes = Divisaos.query();
-		console.log($scope.colaboradores);
 		$scope.currentPage = 1;
 		$scope.pageSize = 10;
 		$scope.tagPapeis = [];
+		$scope.tagPapeisId = [];
 		$scope.offset = 0;
 
 		// Page changed handler
@@ -29,12 +27,12 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 				divisao: this.divisao._id,
 				colaborador: this.colaborador._id,
 				especialidade: this.colaborador.especialidade._id,
-				papel: this.papel._id,
+				papel: this.tagPapeisId,
 				atributos: this.atributos
 
 			});
 			
-			console.log('Valor: ', avaliacao);
+			console.log('Valor: ', avaliacao , this.atributos);
 
 			// Redirect after save
 			 avaliacao.$save(function (response) {
@@ -128,8 +126,9 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 			$location.path('avaliacao/' + product._id);
 		};
 
-		$scope.InserePapelMdChips = function (Papels) {
-			$scope.tagPapeis.push(Papels);
+		$scope.InserePapelMdChips = function (name, id) {
+			$scope.tagPapeis.push(name);
+			$scope.tagPapeisId.push(id);
 		};
 
 		$scope.loadAtributos = function (dscAtributo) {

@@ -22,16 +22,16 @@ function validateLength(v) {
  * Avaliacao Schema
  */
 var AvaliacaoSchema = new Schema({
-    name: {
-        type: String,
-        default: '',
-        trim: true,
-        //unique: true,
-        // make this a required field
-        //required: 'name cannot be blank',
-        // wires in a custom validator function (http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate).
-        validate: [validateLength, 'name must be 15 chars in length or less']
-    },
+    // name: {
+    //     type: String,
+    //     default: '',
+    //     trim: true,
+    //     unique: false,
+    //     // make this a required field
+    //     //required: 'name cannot be blank',
+    //     // wires in a custom validator function (http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate).
+    //     validate: [validateLength, 'name must be 15 chars in length or less']
+    // },
     description: {
         // types are defined e.g. String, Date, Number (http://mongoosejs.com/docs/guide.html)
         type: String,
@@ -51,14 +51,15 @@ var AvaliacaoSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'Especialidade'
 	},
-    papel: {
-		type: Schema.ObjectId,
-		ref: 'Papel'
-	},
+    papel: [],
+    // papel: {
+	// 	type: Schema.ObjectId,
+	// 	ref: 'Papel'
+	// },
     atributos: {
-        type: String,
-        default: '',
-        trim: true
+         type: String,
+         default: '',
+         trim: true
     },    
     created: {
         type: Date,
