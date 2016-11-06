@@ -14,7 +14,7 @@ angular.module('avaliacao').config(['$stateProvider',
 			templateUrl: 'modules/avaliacao/views/list-avaliacao.client.view.html'
 		}).
 		state('create-avaliacao', {
-			url: '/avaliacaocreate',
+			url: '/avaliacao/create',
 			templateUrl: 'modules/avaliacao/views/create-avaliacao.client.view.html'
 		}).
 		state('avaliacao', {
