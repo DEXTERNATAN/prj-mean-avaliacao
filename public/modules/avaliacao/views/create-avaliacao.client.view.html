@@ -68,25 +68,25 @@
 						<!-- <md-button ng-disabled="true" class="md-raised md-primary">SALVAR</md-button> -->
 					</div>
 				</div>
-
-
-
+				
 				<!-- CARDS COM TEXTO DOS ATRIBUTOS -->
 				<div class="techs" layout-align="center">
 
 					<md-card ng-repeat="atributo in atributos">
 						<md-card-content>
-							<md-checkbox ng-model="atributos" ng-checked="atributo.checado" aria-label="selecionar o atributo na avaliação">
+							<md-checkbox ng-model="AtributosVw.checado" ng-value="AtributosVw.checado" ng-checked="AtributosVw.checado" aria-label="selecionar o atributo na avaliação">
 							</md-checkbox>
-							<h3 class="md-title">{{ atributo.name }}</h3>
-							<p>{{ atributo.description }}</p>
+							
+							<h3 class="md-title" ng-init="AtributosVw.name=atributo.name">{{ atributo.name }}</h3>
+							
 						</md-card-content>
 						<div class="md-action-buttons" style="display:left;">
-							<md-button ng-href="{{ awesomeThing.url }}">Abrangência:</md-button>
+							<md-button ng-href="#">Abrangência:</md-button>	
 
 							<br/>
 							<div ng-repeat="classificacao in atributo.classificacao">
-								<md-radio-group ng-model="data.group1" layout="row" layout-align="center center">
+								
+								<md-radio-group ng-model="AtributosVw.classificacao.abrangencia" layout="row" layout-align="center center">
 									<md-radio-button value="{{classificacao.abrangencia.moderado}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.abrangencia.moderado}}')"
 										alt="Teste">M</md-radio-button>
 									<md-radio-button value="{{classificacao.abrangencia.significativa}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.abrangencia.significativa}}')">
@@ -94,18 +94,18 @@
 									<md-radio-button value="{{classificacao.abrangencia.muito}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.abrangencia.muito}}')">M</md-radio-button>
 								</md-radio-group>
 								<br>
-								<md-button ng-href="{{ awesomeThing.url }}">Complexidade:</md-button>
-								<md-radio-group ng-model="data.group2" layout="row" layout-align="center center">
-									<md-radio-button value="{{classificacao.complexidade.moderada}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.complexidade.moderada}}')">S</md-radio-button>
-									<md-radio-button value="{{classificacao.complexidade.alta}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.complexidade.alta}}')"> D </md-radio-button>
+								<md-button ng-href="#">Complexidade:</md-button>
+								<md-radio-group ng-model="AtributosVw.classificacao.complexidade" layout="row" layout-align="center center">
+									<md-radio-button value="{{classificacao.complexidade.moderada}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.complexidade.moderada}}')">M</md-radio-button>
+									<md-radio-button value="{{classificacao.complexidade.alta}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.complexidade.alta}}')"> A </md-radio-button>
 									<md-radio-button value="{{classificacao.complexidade.altissima}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.complexidade.altissima}}')">A</md-radio-button>
 								</md-radio-group>
 								<br/>
-								<md-button ng-href="{{ awesomeThing.url }}">Impacto:</md-button>
-								<md-radio-group ng-model="data.group3" layout="row" layout-align="center center">
-									<md-radio-button value="{{classificacao.impacto.relevancia}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.impacto.relevancia}}')">G</md-radio-button>
-									<md-radio-button value="{{classificacao.impacto.muito}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.impacto.muito}}')"> B </md-radio-button>
-									<md-radio-button value="{{classificacao.impacto.altamente}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.impacto.altamente}}')">C</md-radio-button>
+								<md-button ng-href="#">Impacto:</md-button>
+								<md-radio-group ng-model="AtributosVw.classificacao.impacto" layout="row" layout-align="center center">
+									<md-radio-button value="{{classificacao.impacto.relevancia}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.impacto.relevancia}}')">R</md-radio-button>
+									<md-radio-button value="{{classificacao.impacto.muito}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.impacto.muito}}')"> M </md-radio-button>
+									<md-radio-button value="{{classificacao.impacto.altamente}}" class="md-primary" ng-click="showAlert($event, '{{classificacao.impacto.altamente}}')">A</md-radio-button>
 								</md-radio-group>
 							</div>
 							<br>

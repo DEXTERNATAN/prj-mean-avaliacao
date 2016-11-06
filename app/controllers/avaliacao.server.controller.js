@@ -5,11 +5,10 @@
  */
 var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
-    Avaliacao = mongoose.model('Avaliacao'),
-	Divisao = mongoose.model('Divisao'),
+    Divisao = mongoose.model('Divisao'),
 	Colaborador = mongoose.model('Colaborador'),
 	Especialidade = mongoose.model('Especialidade'),
-	Papel = mongoose.model('Papel'),
+	Avaliacao = mongoose.model('Avaliacao'),
     _ = require('lodash');
 
 /**
@@ -18,11 +17,10 @@ var mongoose = require('mongoose'),
 exports.create = function (req, res) {
 
 	var avaliacao = new Avaliacao(req.body);
-
+	
 	avaliacao.divisao = req.body.divisao;
 	avaliacao.colaborador = req.body.colaborador;
 	avaliacao.especialidade = req.body.especialidade;
-	avaliacao.papel = req.body.papel;
 
 	avaliacao.save(function (err) {
 		if (err) {
