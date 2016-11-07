@@ -12,6 +12,11 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		$scope.tagPapeis = [];
 		$scope.tagPapeisId = [];
 		$scope.offset = 0;
+		$scope.teste = {
+			atributos: $scope.atributos
+		};
+		$scope.testex = {};
+		$scope.atributo = [];
 		$scope.AtributosVw = {
 			id: null,
 			name: null,
@@ -35,7 +40,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 			// }
 		};
 
-		console.log('Valor dos atributos', $scope.AtributosVw);
+
 
 		// Page changed handler
 		$scope.pageChanged = function() {
@@ -45,8 +50,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Create new Avaliação
 		$scope.create = function() {
 
-			//console.log('Valor dos atributos', $scope.AtributosVw);
-
+			console.log('Valor dos atributos', $scope.teste);
 			// Create new Avaliação object
 			
 			// var avaliacao = new Avaliacao({
