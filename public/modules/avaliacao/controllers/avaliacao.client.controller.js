@@ -14,6 +14,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		$scope.offset = 0;
 	
 		$scope.mode = 'Delivery';
+		$scope.radioModel3 = 'Moderado';
 
 		$scope.AtributosVw = {
 			id: null,
@@ -48,7 +49,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Create new Avaliação
 		$scope.create = function() {
 
-			console.log('Valor dos atributos', $scope.AtributosVw.classificacao.abrangencia.moderado);
+			console.log('Valor dos atributos: ', $scope.teste);
 			// Create new Avaliação object
 			
 			// var avaliacao = new Avaliacao({
