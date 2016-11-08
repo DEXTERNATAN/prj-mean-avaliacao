@@ -68,12 +68,52 @@
 						<!-- <md-button ng-disabled="true" class="md-raised md-primary">SALVAR</md-button> -->
 					</div>
 				</div>
-				
-				<!--<md-checkbox ng-model="AtributosVw.checado" ng-value="atributo.checado" ng-checked="atributo.checado" 
-				aria-label="selecionar o atributo na avaliação">-->
-				</md-checkbox>
-				<!-- CARDS COM TEXTO DOS ATRIBUTOS -->
+
 				<div class="techs" layout-align="center">
+					<md-card ng-repeat="atributo in atributos" ng-init="parentIndex = $index">
+						<md-card-content>
+							<md-checkbox ng-model="checado" ng-value="atributo.checado" ng-checked="atributo.checado" aria-label="selecionar o atributo na avaliação">
+							</md-checkbox>
+							<h3 class="md-title" ng-init="AtributosVw.name=atributo.name">{{ atributo.name }}</h3>
+						</md-card-content>
+
+						<!--<div class="btn-group">
+							<label ng-repeat='option in atributo.classificacao[0].abrangencia' class="btn btn-primary" ng-model="$parent.radioModel2"
+								btn-radio="'{{option}}'" uncheckable>{{option}}</label>
+						</div>-->
+						<div class="md-action-buttons" style="display:center;">
+							<div ng-repeat="DscAtributos in atributo.classificacao">
+								<!--<div ng-repeat="(key,value) in DscAtributos" value="$index">-->
+									<md-button ng-href="#">Abrangencia:</md-button><br>
+									<!--<pre>{{value || 'null'}}</pre>-->
+									<div class="btn-group">
+										<!--<pre>{{radioModel2 || 'null'}}</pre>-->
+										<label ng-repeat='option in atributo.classificacao[0].abrangencia' class="btn btn-primary" ng-model="$parent.radioModel2"
+											btn-radio="'{{option}}'" uncheckable>{{option}}</label>
+									</div>
+									<br>
+									<md-button ng-href="#">Complexidade:</md-button><br>
+									<div class="btn-group">
+										<!--<pre>{{radioModel3 || 'null'}}</pre>-->
+										<label ng-repeat='option in atributo.classificacao[0].complexidade' class="btn btn-primary" ng-model="$parent.radioModel3"
+											btn-radio="'{{option}}'" uncheckable>{{option}}</label>
+									</div>
+									<br>
+									<md-button ng-href="#">Impacto:</md-button><br>
+									<div class="btn-group">
+										<!--<pre>{{radioModel4 || 'null'}}</pre>-->
+										<label ng-repeat='option in atributo.classificacao[0].complexidade' class="btn btn-primary" ng-model="$parent.radioModel4"
+											btn-radio="'{{option}}'" uncheckable>{{option}}</label>
+									</div>
+								<!--</div>-->
+							</div>
+						</div>
+				</div>
+				</md-card>
+		</div>
+
+		<!-- CARDS COM TEXTO DOS ATRIBUTOS -->
+		<!--<div class="techs" layout-align="center">
 					<md-card ng-repeat="atributo in atributos" ng-init="parentIndex = $index">
 						{{atributo.checado}}
 						<md-card-content>
@@ -101,9 +141,9 @@
 								<br>
 							</div>
 					</md-card>
-					</div>
-				<br>
-			</md-content>
-		</div>
-	</form>
+					</div>-->
+		<br>
+		</md-content>
+</div>
+</form>
 </div>

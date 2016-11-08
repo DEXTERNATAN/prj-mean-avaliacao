@@ -12,35 +12,33 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		$scope.tagPapeis = [];
 		$scope.tagPapeisId = [];
 		$scope.offset = 0;
-		$scope.teste = {
-			atributos: $scope.atributos
-		};
-		$scope.testex = {};
-		$scope.atributo = [];
+	
+		$scope.mode = 'Delivery';
+
 		$scope.AtributosVw = {
 			id: null,
 			name: null,
-			checado: true
-			// classificacao: {
-			// 	abrangencia: {
-			// 		moderado: true,
-			// 		significativo: null,
-			// 		muito: null
-			// 	},
-			// 	complexidade: {
-			// 		moderada: null,
-			// 		alta: null,
-			// 		altissima: null
-			// 	},
-			// 	impacto: {
-			// 		relevancia: null,
-			// 		muito: null,
-			// 		altamente: null
-			// 	}
-			// }
+			checado: true,
+			classificacao: {
+				abrangencia: {
+					moderado: true,
+					significativo: null,
+					muito: null
+				},
+				complexidade: {
+					moderada: null,
+					alta: null,
+					altissima: null
+				},
+				impacto: {
+					relevancia: null,
+					muito: null,
+					altamente: null
+				}
+			}
 		};
 
-
+		
 
 		// Page changed handler
 		$scope.pageChanged = function() {
@@ -50,7 +48,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Create new Avaliação
 		$scope.create = function() {
 
-			console.log('Valor dos atributos', $scope.teste);
+			console.log('Valor dos atributos', $scope.AtributosVw.classificacao.abrangencia.moderado);
 			// Create new Avaliação object
 			
 			// var avaliacao = new Avaliacao({
