@@ -132,7 +132,11 @@ exports.delete = function (req, res) {
  * List of Avaliacaos
  */
 exports.list = function (req, res) {
-	Avaliacao.find().exec(function (err, avaliacao) {
+	Avaliacao.find().sort('-created')
+	.populate('especialidade', 'name')
+	.populate('divisao', 'name')
+	.populate('colaborador', 'name')
+	.exec(function (err, avaliacao) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)

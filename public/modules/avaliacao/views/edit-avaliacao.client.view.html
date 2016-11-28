@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label class="control-label" for="name">Name</label>
                     <div class="controls">
                         <input type="text" data-ng-model="avaliacao.name" id="name" class="form-control" placeholder="Name" required>
@@ -16,7 +16,19 @@
                     <div class="controls">
                         <textarea name="description" data-ng-model="avaliacao.description" id="description" class="form-control" cols="30" rows="10" placeholder="Description" required></textarea>
                     </div>
-                </div>
+                </div>-->
+                <div class="form-group">
+					<label class="control-label" for="name">Especialidade</label>
+					<div class="controls">
+                    <md-select placeholder="Selecione a especialidade" ng-model="colaborador.especialidade._id" md-on-open="findEspecialidades()" style="min-width: 200px;">
+						<md-option 
+                            ng-value="especialidade._id" 
+                            ng-repeat="especialidade in especialidades"
+                            ng-selected="{{ avaliacao.especialidade === especialidade._id ? 'true' : '' }}"
+                            >{{especialidade.name}}</md-option>
+					</md-select>
+					</div>
+                </div>                
                 <div class="form-group">
                     <label class="control-label" for="divisao">divisao</label>
                     <div class="controls">
@@ -35,6 +47,7 @@
                         <input type="text" data-ng-model="avaliacao.especialidade" id="especialidade" class="form-control" placeholder="especialidade" required>
                     </div>
                 </div>
+                {{avaliacao}}
                 <div class="form-group">
                     <label class="control-label" for="papel">papel</label>
                     <div class="controls">

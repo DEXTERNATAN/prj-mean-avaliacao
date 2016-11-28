@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos', 'Colaboradors', 'Papels',
+angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$stateParams', '$location', 'Authentication', 'Avaliacao', 'Divisaos', 'Colaboradors','Especialidades', 'Papels',
 	'Atributos', '$mdConstant', '$mdDialog',
 
-	function($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Papels, Atributos, $mdConstant, $mdDialog) {
-
+	function($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Especialidades, Papels, Atributos, $mdConstant, $mdDialog) {
+		
 		$scope.authentication = Authentication;
 		$scope.atributos = Atributos.query();
+		$scope.especialidades = Especialidades.query();
 		$scope.currentPage = 1;
 		$scope.pageSize = 10;
 		$scope.tagPapeis = [];
@@ -49,38 +50,38 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		$scope.create = function() {
 
 			console.log('Valor dos atributos: ', $scope.radioModel3);
-			// Create new Avaliação object
-			
-			// var avaliacao = new Avaliacao({
-			// 	name: this.name,
-			// 	description: this.description,
-			// 	divisao: this.divisao._id,
-			// 	colaborador: this.colaborador._id,
-			// 	especialidade: this.colaborador.especialidade._id,
-			// 	papel: this.tagPapeisId,
-			// 	atributos: this.atributos
 
-			// });
+			// Create new Avaliação object
+			var avaliacao = new Avaliacao({
+				name: this.name,
+				description: this.description,
+				divisao: this.divisao._id,
+				colaborador: this.colaborador._id,
+				especialidade: this.colaborador.especialidade._id,
+				papel: this.tagPapeisId,
+				atributos: this.atributos
+
+			});
 
 			console.log('Valor dos objetos: ', this.atributos);
 
-			// Redirect after save
-			// avaliacao.$save(function(response) {
+			//Redirect after save
+			avaliacao.$save(function(response) {
 
-			// 	//$location.path('avaliacao/' + response._id);
+				//$location.path('avaliacao/' + response._id);
 
-			// 	// Clear form fields
-			// 	$scope.name = '';
-			// 	$scope.description = '';
-			// 	$scope.divisao = '';
-			// 	$scope.colaborador = '';
-			// 	$scope.especialidade = '';
-			// 	$scope.papel = '';
-			// 	$scope.atributos = '';
+				// Clear form fields
+				$scope.name = '';
+				$scope.description = '';
+				$scope.divisao = '';
+				$scope.colaborador = '';
+				$scope.especialidade = '';
+				$scope.papel = '';
+				$scope.atributos = '';
 
-			// }, function(errorResponse) {
-			// 	$scope.error = errorResponse.data.message;
-			// });
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
 		};
 
 		// Remove existing Avaliacao
