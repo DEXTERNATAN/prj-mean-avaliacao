@@ -12,7 +12,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		$scope.tagPapeis = [];
 		$scope.tagPapeisId = [];
 		$scope.offset = 0;
-	
+		$scope.atributo = {};
 		$scope.mode = 'Delivery';
 		$scope.radioModel3 = 'Moderado';
 
@@ -40,7 +40,6 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		};
 
 		
-
 		// Page changed handler
 		$scope.pageChanged = function() {
 			$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
@@ -49,7 +48,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Create new Avaliação
 		$scope.create = function() {
 
-			console.log('Valor dos atributos: ', $scope.teste);
+			console.log('Valor dos atributos: ', $scope.radioModel3);
 			// Create new Avaliação object
 			
 			// var avaliacao = new Avaliacao({

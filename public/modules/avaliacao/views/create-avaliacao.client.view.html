@@ -82,7 +82,7 @@
 								btn-radio="'{{option}}'" uncheckable>{{option}}</label>
 						</div>-->
 
-						<input type="text" name="teste" id="teste" ng-model="teste">
+						<!--<input type="text" name="teste" id="teste" ng-model="teste">-->
 
 						<div class="md-action-buttons" style="display:center;">
 							<div ng-repeat="DscAtributos in atributo.classificacao">
@@ -99,7 +99,7 @@
 									<div class="btn-group">
 										<pre>{{radioModel3 || 'null'}}</pre>
 										<label ng-repeat='option in atributo.classificacao[0].complexidade' class="btn btn-primary" ng-model="$parent.radioModel3"
-											btn-radio="'{{option}}'" uncheckable>{{option}}</label>
+											btn-radio="'{{option}}'" uncheckable ng-value="$parent.radioModel3">{{option}}</label>
 									</div>
 									<br>
 									<md-button ng-href="#">Impacto:</md-button><br>
