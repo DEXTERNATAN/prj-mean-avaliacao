@@ -1,6 +1,5 @@
 <div ng-controller="AvaliacaoController" ng-cloak data-ng-init="find()">
 	<form class="form-horizontal" data-ng-submit="create()" novalidate>
-
 		<div layout="vertical" layout-md-column>
 			<md-content>
 				<section class="jumbotron">
@@ -15,11 +14,6 @@
 						</md-select>
 					</div>
 				</div>
-
-				<!--<input type="text" data-ng-model="name" id="name" value="name" class="form-control" placeholder="name" required>
-				<input type="text" data-ng-model="description" id="description" value="description" class="form-control" placeholder="description" required>-->
-
-
 				<!-- COLABORADORES -->
 				<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
 					<p>Colaborador:</p>&nbsp;&nbsp;&nbsp;
@@ -29,8 +23,6 @@
 						</md-select>
 					</div>
 				</div>
-
-				<!--{{colaboradores}}-->
 				<!-- ESPECIALIDADES -->
 				<div style=" width: 30%; display: right; margin: 0 auto;">
 					<div layout-gt-sm="row">
@@ -40,9 +32,6 @@
 						</md-input-container>
 					</div>
 				</div>
-
-				<!--<input type="text" data-ng-model="colaborador.especialidade.name" id="especialidade" value="" class="form-control" placeholder="" required>-->
-
 				<!-- PAPEL -->
 				<div layout="row" layout-align="center center" style="padding:5px" ng-cloak="" class="selectdemoOptionsWithAsyncSearch">
 					<p>Papel:</p>&nbsp;&nbsp;&nbsp;
@@ -52,7 +41,6 @@
 						</md-select>
 					</div>
 				</div>
-
 				<!-- CHIPS COM OPÇÕES PARA DELEÇÃO -->
 				<div style=" width: 92%; display: right; margin: 0 auto;" ng-if="papel">
 					<md-content class="md-padding" layout="column">
@@ -60,12 +48,9 @@
 						<md-chips ng-model="tagPapeis" ng-init="[]" name="listPapeis" ng-value="listPapeis" md-separator-keys="main.customKeys"></md-chips>
 						<br/>
 					</md-content>
-
 					<div style=" width: 5%; display: left; margin: 0 auto;" ng-if="papel">
-						<!-- <md-button class="md-raised">SALVAR</md-button> -->
 						<md-button class="md-raised md-primary">SALVAR</md-button>
 						<input type="submit" class="btn btn-default">
-						<!-- <md-button ng-disabled="true" class="md-raised md-primary">SALVAR</md-button> -->
 					</div>
 				</div>
 
@@ -77,75 +62,36 @@
 							<h3 class="md-title" ng-init="AtributosVw.name=atributo.name">{{ atributo.name }}</h3>
 						</md-card-content>
 
-						<!--<div class="btn-group">
-							<label ng-repeat='option in atributo.classificacao[0].abrangencia' class="btn btn-primary" ng-model="$parent.radioModel2"
-								btn-radio="'{{option}}'" uncheckable>{{option}}</label>
-						</div>-->
-
-						<!--<input type="text" name="teste" id="teste" ng-model="teste">-->
-
 						<div class="md-action-buttons" style="display:center;">
 							<div ng-repeat="DscAtributos in atributo.classificacao">
 								<!--<div ng-repeat="(key,value) in DscAtributos" value="$index">-->
-									<md-button ng-href="#">Abrangencia:</md-button><br>
-									<!--<pre>{{value || 'null'}}</pre>-->
-									<div class="btn-group">
-										<!--<pre>{{radioModel2 || 'null'}}</pre>-->
-										<label ng-repeat='option in atributo.classificacao[0].abrangencia' class="btn btn-primary" ng-model="$parent.radioModel2"
-											btn-radio="'{{option}}'" uncheckable>{{option}}</label>
-									</div>
-									<br>
-									<md-button ng-href="#">Complexidade:</md-button><br>
-									<div class="btn-group">
-										<pre>{{radioModel3 || 'null'}}</pre>
-										<label ng-repeat='option in atributo.classificacao[0].complexidade' class="btn btn-primary" ng-model="$parent.radioModel3"
-											btn-radio="'{{option}}'" uncheckable ng-value="$parent.radioModel3">{{option}}</label>
-									</div>
-									<br>
-									<md-button ng-href="#">Impacto:</md-button><br>
-									<div class="btn-group">
-										<!--<pre>{{radioModel4 || 'null'}}</pre>-->
-										<label ng-repeat='option in atributo.classificacao[0].impacto' class="btn btn-primary" ng-model="$parent.radioModel4"
-											btn-radio="'{{option}}'" uncheckable>{{option}}</label>
-									</div>
+								<md-button ng-href="#">Abrangencia:</md-button><br>
+								<!--<pre>{{value || 'null'}}</pre>-->
+								<div class="btn-group">
+									<!--<pre>{{radioModel2 || 'null'}}</pre>-->
+									<label ng-repeat='option in atributo.classificacao[0].abrangencia' class="btn btn-primary" ng-model="$parent.radioModel2"
+										btn-radio="'{{option}}'" uncheckable>{{option}}</label>
+								</div>
+								<br>
+								<md-button ng-href="#">Complexidade:</md-button><br>
+								<div class="btn-group">
+									<!--<pre>{{radioModel3 || 'null'}}</pre>-->
+									<label ng-repeat='option in atributo.classificacao[0].complexidade' class="btn btn-primary" ng-model="$parent.radioModel3"
+										btn-radio="'{{option}}'" uncheckable ng-value="$parent.radioModel3">{{option}}</label>
+								</div>
+								<br>
+								<md-button ng-href="#">Impacto:</md-button><br>
+								<div class="btn-group">
+									<!--<pre>{{radioModel4 || 'null'}}</pre>-->
+									<label ng-repeat='option in atributo.classificacao[0].impacto' class="btn btn-primary" ng-model="$parent.radioModel4" btn-radio="'{{option}}'"
+										uncheckable>{{option}}</label>
+								</div>
 								<!--</div>-->
 							</div>
 						</div>
 				</div>
 				</md-card>
 		</div>
-
-		<!-- CARDS COM TEXTO DOS ATRIBUTOS -->
-		<!--<div class="techs" layout-align="center">
-					<md-card ng-repeat="atributo in atributos" ng-init="parentIndex = $index">
-						{{atributo.checado}}
-						<md-card-content>
-							<md-checkbox ng-model="checado" ng-value="atributo.checado" ng-checked="atributo.checado" aria-label="selecionar o atributo na avaliação">
-							</md-checkbox>
-							<h3 class="md-title" ng-init="AtributosVw.name=atributo.name">{{ atributo.name }}</h3>
-						</md-card-content>
-						<div class="md-action-buttons" style="display:left;">
-							<div ng-repeat="DscAtributos in atributo.classificacao">
-								<div ng-repeat="(key,value) in DscAtributos" value="$index">	
-									<md-button ng-href="#">{{key}}:</md-button>
-										{{atributo[$index]}}
-										<md-radio-group ng-model="testex" layout="column" layout-align="left left">
-											<md-radio-button 
-												ng-model="teste"
-												ng-value="key"
-												ng-repeat="(key,value) in value" 
-												value="{{key}}-{{$index}}"
-												class="md-primary"
-												ng-disabled=" d.isDisabled " ng-class="{'md-align-top-left': $index==1}">
-												{{key}}
-											</md-radio-button>
-										</md-radio-group>
-								</div>
-								<br>
-							</div>
-					</md-card>
-					</div>-->
-		<br>
 		</md-content>
 </div>
 </form>

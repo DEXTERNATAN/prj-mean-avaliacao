@@ -10,7 +10,7 @@ angular.module('atributos').controller('AtributosController', ['$scope', '$state
 		$scope.classificacao = {
 			abrangencia: {
 				moderado: null,
-				significativo: null,
+				significativa: null,
 				muito: null
 			},
 			complexidade: {
