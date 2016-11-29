@@ -33,7 +33,7 @@ var AvaliacaoSchema = new Schema({
     //     // wires in a custom validator function (http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate).
     //     validate: [validateLength, 'name must be 15 chars in length or less']
     // },
-    description: {
+    name: {
         // types are defined e.g. String, Date, Number (http://mongoosejs.com/docs/guide.html)
         type: String,
         default: '',

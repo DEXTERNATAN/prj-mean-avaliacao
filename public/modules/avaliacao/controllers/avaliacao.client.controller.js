@@ -6,8 +6,17 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 	function($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Especialidades, Papels, Atributos, $mdConstant, $mdDialog) {
 		
 		$scope.authentication = Authentication;
+		
 		$scope.atributos = Atributos.query();
 		$scope.especialidades = Especialidades.query();
+		$scope.divisoes = Divisaos.query();
+		$scope.colaboradores = Colaboradors.query();
+		$scope.papels = Papels.query();
+
+
+		// $scope.colaborador = Colaboradors.query();
+
+
 		$scope.currentPage = 1;
 		$scope.pageSize = 10;
 		$scope.tagPapeis = [];
@@ -59,7 +68,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 				colaborador: this.colaborador._id,
 				especialidade: this.colaborador.especialidade._id,
 				papel: this.tagPapeisId,
-				atributos: this.atributos
+				atributos: [$scope.radioModel3]
 
 			});
 
