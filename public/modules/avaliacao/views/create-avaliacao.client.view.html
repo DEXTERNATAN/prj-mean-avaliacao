@@ -60,42 +60,125 @@
 						<!--<input type="submit" class="btn btn-default">-->
 					</div>
 				</div>
-				{{avaliacao}}
+				
 				<div class="techs" layout-align="center">
 					<md-card ng-repeat="atributo in atributos" ng-init="parentIndex = $index">
 						<md-card-content>
-							<md-checkbox ng-model="checado" ng-value="atributo.checado" ng-checked="atributo.checado" aria-label="selecionar o atributo na avaliação">
+							<md-checkbox ng-model="atributo.checado" aria-label="selecionar o atributo na avaliação">
 							</md-checkbox>
-							<h3 class="md-title" ng-init="AtributosVw.name=atributo.name">{{ atributo.name }}</h3>
+							<h3 class="md-title">{{ atributo.name }}</h3>
 						</md-card-content>
 
-						<div class="md-action-buttons" style="display:center;">
-							<div ng-repeat="DscAtributos in atributo.classificacao">
-								<!--<div ng-repeat="(key,value) in DscAtributos" value="$index">-->
-								<md-button ng-href="#">Abrangencia:</md-button><br>
-								<!--<pre>{{value || 'null'}}</pre>-->
+						<!-- INICIO RESOLVER ESTA PARTE -->
+						<!-- 1 - Cadastrar para cada avaliacao o array com o nome do atributo + valor true / false para o atributo -->
+						<!-- 2 - Pensar em como fazer o cadastro do atributo dentro da avaliacao -->
+						<!-- 3 - Mostrar tooltip com o valor cadastrado do atributo -->
+ 						<!--
+ 						atributos: 
+						{
+							id_atributo: 123456,
+							Abrangencia: 1,
+							Complexidade: 2,
+							impacto: 3
+
+						} 
+						-->
+
+						<div class=" text-center md-action-buttons" style="display:center;">
+							
+							<md-button ng-href="#">Abrangencia:</md-button><br>
+							
+							<div ng-repeat="classificacao in atributo.classificacao">
+								<!-- <pre>{{radioModel3 || 'null'}}</pre> -->
 								<div class="btn-group">
-									<!--<pre>{{radioModel2 || 'null'}}</pre>-->
-									<label ng-repeat='option in atributo.classificacao[0].abrangencia' class="btn btn-primary" ng-model="$parent.radioModel2"
-										btn-radio="'{{option}}'" uncheckable>{{option}}</label>
+							    	<label class="btn btn-success" ng-model="radioModel3" btn-radio="'Moderado'" uncheckable>
+							    		Moderado
+							    	</label>
+
+							        <label class="btn btn-success" ng-model="radioModel3" btn-radio="'Significativo'" uncheckable>			Significativo
+							        </label>
+							        <label class="btn btn-success" ng-model="radioModel3" btn-radio="'Muito'" uncheckable>
+							        	Muito
+							        </label>
 								</div>
-								<br>
+							</div>
+
+
+							<md-button ng-href="#">Complexidade:</md-button><br>
+							<div ng-repeat="classificacao in atributo.classificacao">
+								<div class="btn-group">
+							    	<label class="btn btn-success" ng-model="Complexidade" btn-radio="'Moderada'" uncheckable>
+							    		Moderada
+							    	</label>
+							        <label class="btn btn-success" ng-model="Complexidade" btn-radio="'Alta'" uncheckable>
+							        	Alta
+							        </label>
+							        <label class="btn btn-success" ng-model="Complexidade" btn-radio="'Altissima'" uncheckable>
+							        	Altissima
+							        </label>
+								</div>
+							</div>							
+
+							<md-button ng-href="#">Impacto:</md-button><br>
+							<div ng-repeat="classificacao in atributo.classificacao">
+								<div class="btn-group">
+							    	<label class="btn btn-success" ng-model="Impacto" btn-radio="'Relevante'" uncheckable>
+							    		Relevante
+							    	</label>
+							        <label class="btn btn-success" ng-model="Impacto" btn-radio="'Muito'" uncheckable>
+							        	Muito
+							        </label>
+							        <label class="btn btn-success" ng-model="Impacto" btn-radio="'Altamente'" uncheckable>
+							        	Altamente
+							        </label>
+								</div>
+							</div>							
+							<p><br></p>
+							<p><br></p>
+							<!--<h1>Abrangencia</h1>
+							<div ng-repeat="classificacao in atributo.classificacao">
+								<p>{{classificacao.abrangencia.moderado}}</p>	
+								<p>{{classificacao.abrangencia.significativa}}</p>
+								<p>{{classificacao.abrangencia.muito}}</p>
+							</div>
+							<h1>complexidade</h1>
+							<div ng-repeat="classificacao in atributo.classificacao">
+								<p>{{classificacao.complexidade.moderada}}</p>	
+								<p>{{classificacao.complexidade.alta}}</p>
+								<p>{{classificacao.complexidade.altissima}}</p>
+							</div>
+							<h1>impacto</h1>
+							<div ng-repeat="classificacao in atributo.classificacao">
+								<p>{{classificacao.impacto.relevante}}</p>	
+								<p>{{classificacao.impacto.muito}}</p>
+								<p>{{classificacao.impacto.altamente}}</p>
+							</div> -->
+
+<!-- 
+							<div ng-repeat="DscAtributos in atributo.classificacao track by $index">
+								<md-button ng-href="#">Abrangencia:</md-button><br>
+								<div class="btn-group">
+									<label ng-repeat='option in atributo.classificacao.abrangencia' class="btn btn-primary"
+									ng-model="atributo.classificacao[0].abrangencia" btn-radio="'{{option}}'" uncheckable>{{option}}</label>
+								</div>
+						 		<br>
 								<md-button ng-href="#">Complexidade:</md-button><br>
 								<div class="btn-group">
-									<!--<pre>{{radioModel3 || 'null'}}</pre>-->
 									<label ng-repeat='option in atributo.classificacao[0].complexidade' class="btn btn-primary" ng-model="$parent.radioModel3"
 										btn-radio="'{{option}}'" uncheckable ng-value="$parent.radioModel3">{{option}}</label>
 								</div>
 								<br>
 								<md-button ng-href="#">Impacto:</md-button><br>
 								<div class="btn-group">
-									<!--<pre>{{radioModel4 || 'null'}}</pre>-->
 									<label ng-repeat='option in atributo.classificacao[0].impacto' class="btn btn-primary" ng-model="$parent.radioModel4" btn-radio="'{{option}}'"
 										uncheckable>{{option}}</label>
 								</div>
-								<!--</div>-->
-							</div>
+
+							</div> -->
+
 						</div>
+						<!-- FIM RESOLVER ESTA PARTE -->
+
 				</div>
 				</md-card>
 		</div>

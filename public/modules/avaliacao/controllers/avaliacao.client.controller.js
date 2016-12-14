@@ -5,17 +5,12 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 	function($scope, $stateParams, $location, Authentication, Avaliacao, Divisaos, Colaboradors, Especialidades, Papels, Atributos, $mdConstant, $mdDialog) {
 		
-		$scope.authentication = Authentication;
-		
+		$scope.authentication = Authentication;	
 		$scope.atributos = Atributos.query();
 		$scope.especialidades = Especialidades.query();
 		$scope.divisoes = Divisaos.query();
 		$scope.colaboradores = Colaboradors.query();
 		$scope.papels = Papels.query();
-
-
-		// $scope.colaborador = Colaboradors.query();
-
 
 		$scope.currentPage = 1;
 		$scope.pageSize = 10;
@@ -23,8 +18,11 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		$scope.tagPapeisId = [];
 		$scope.offset = 0;
 		$scope.atributo = {};
-		$scope.mode = 'Delivery';
+		
 		$scope.radioModel3 = 'Moderado';
+
+		console.log(Avaliacao.query());
+
 
 		$scope.AtributosVw = {
 			id: null,
@@ -58,8 +56,6 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 		// Create new Avaliação
 		$scope.create = function() {
 
-			console.log('Valor dos atributos: ', $scope.radioModel3);
-
 			// Create new Avaliação object
 			var avaliacao = new Avaliacao({
 				name: this.name,
@@ -72,7 +68,7 @@ angular.module('avaliacao').controller('AvaliacaoController', ['$scope', '$state
 
 			});
 
-			console.log('Valor dos objetos: ', this.atributos);
+			console.log('Valor dos atributos P2: ', this.atributos, $scope.radioModel3);
 
 			//Redirect after save
 			avaliacao.$save(function(response) {
